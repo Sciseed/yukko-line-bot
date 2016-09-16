@@ -101,7 +101,7 @@ def dispose(results):
     if event_type == EVENT_REGISTER:
       send_to = [result['content']['params'][0]]
       operation_type = result['content']['onType']
-      if int(operation_type) == 4:
+      #if int(operation_type) == 4:
         #response_to_register(send_to)
     elif event_type == EVENT_TALK:
       send_to = [result['content']['from']]
