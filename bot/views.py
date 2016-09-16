@@ -95,11 +95,11 @@ def post_image(send_to):
 def response_to_register(send_to):
   user_name = get_user_name(send_to[0])
   text = '{0}さん、はじめまして！'.format(user_name.encode('utf-8'))
-    headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'X-Line-ChannelID': "1480426345",
-      'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
-      'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
+  headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'X-Line-ChannelID': "1480426345",
+    'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
+    'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
   }
   payload = {
       'toChannel': 1383378250,
