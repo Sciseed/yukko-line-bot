@@ -109,6 +109,7 @@ def dispose(results):
 
 def response_to_talk(send_to, result):
     content_type = result['content']['contentType']
+    text = result['content']['text']
     print(content_type)
     if content_type == 1:
        print("this is text request")
