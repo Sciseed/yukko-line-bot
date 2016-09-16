@@ -1,21 +1,18 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-#from . import forms
 import os
 import json
 import random
-import base64
-import hashlib
-import binascii
 import logging
 import doco.client
-
 import requests
 from django.http import JsonResponse
 from django.views.generic import View
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
+EVENT_REGISTER = '138311609100106403'
+EVENT_TALK = '138311609000106303'
 
 logger = logging.getLogger('command')
 
@@ -95,12 +92,22 @@ def post_image(send_to):
 
     req = requests.post(ENDPOINT, headers=headers, data=json.dumps(payload))
 
+#def response_to_register(send_to):
+
+
 def dispose(results):
-  print("this is dispose request")
   for result in results:
     event_type = result['eventType']
-    send_to = [result['content']['from']]
-    text = result['content']['text']
+    if event_type == EVENT_REGISTER:
+      send_to = [result['content']['params'][0]]
+      operation_type = result['content']['onType']
+      if int(operation_type) == 4:
+        #response_to_register(send_to)
+    elif event_type == EVENT_TALK:
+      send_to = [result['content']['from']]
+      response_to_talk(send_to, result)
+
+def response_to_talk(send_to, result):
     content_type = result['content']['contentType']
     print(content_type)
     if content_type == 1:
@@ -127,6 +134,5 @@ class HelloView(View):
         return JsonResponse({'suzuki':'kosuke'})
 
     def post(self, request, *args, **kwargs):
-      print('done post method')
       dispose(json.loads(request.body.decode("utf-8"))['result'])
       return JsonResponse({'kosuke': 'suzuki'})
