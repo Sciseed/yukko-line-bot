@@ -37,7 +37,7 @@ def post_text(send_to, content):
         'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
-    output = mizu_res[0]['a']
+    output = mizu_res[0]['a'][0]
     # if 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
     #     output = docomo_res['utt']
     # else:
