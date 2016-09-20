@@ -8,6 +8,7 @@ import doco.client
 import requests
 from django.http import JsonResponse
 from django.views.generic import View
+import urllib
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
@@ -45,11 +46,9 @@ def post_text(send_to, content):
     print(req.__dict__)
 
 def post_question(send_to, question):
-    #docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
-    #docomo_res = docomo_client.send(q=question, apiname='Dialogue')
     options = {
     'APIKEY': '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33',
-    'q': '%E4%BA%BA%E9%A1%9E%E5%88%9D%E3%81%AE%E5%AE%87%E5%AE%99%E9%A3%9B%E8%A1%8C%E5%A3%AB%E3%81%AF'
+    'q': question
     }
     docomo_res = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
     headers = {
