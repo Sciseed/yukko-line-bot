@@ -20,14 +20,25 @@ logger = logging.getLogger('command')
 
 def post_text(send_to, content):
     #user = {'t': 20}
+    #雑談
     docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
     docomo_res = docomo_client.send(utt=content,apiname='Dialogue')
+    options = {
+    'APIKEY': '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33',
+    'q': content
+    }
+    #質問
+    docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'X-Line-ChannelID': "1480426345",
         'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
+    if 'わかりません' in docomo_res_q['message']['textForDisplay']:
+        output = docomo_res['utt']
+    else:
+        output = docomo_res_q['message']['textForDisplay']
     payload = {
         'toChannel': 1383378250,
         'eventType': '138311608800106203',
@@ -35,7 +46,7 @@ def post_text(send_to, content):
         'content': {
            "contentType":1,
            "toType":1,
-           "text":docomo_res['utt'],
+           "text": output,
         }
     }
     print('request')
@@ -166,7 +177,7 @@ def response_to_talk(send_to, result):
        if('みお' in result['content']['text']):
               post_image(send_to)
        else:
-              post_question(send_to, text)
+              post_text(send_to, text)
     elif content_type == 8:
        print("this is sticker request")
        post_sticker(send_to)
