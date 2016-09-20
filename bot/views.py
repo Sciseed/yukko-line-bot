@@ -23,11 +23,11 @@ def post_text(send_to, content):
     #雑談
     docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
     docomo_res = docomo_client.send(utt=content,apiname='Dialogue')
+    #質問
     options = {
     'APIKEY': '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33',
     'q': content
     }
-    #質問
     docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -35,7 +35,7 @@ def post_text(send_to, content):
         'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
-    if 'わかりません' in docomo_res_q['message']['textForDisplay']:
+    if 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
         output = docomo_res['utt']
     else:
         output = docomo_res_q['message']['textForDisplay']
