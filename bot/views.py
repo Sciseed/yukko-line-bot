@@ -13,12 +13,13 @@ ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
 EVENT_REGISTER = '138311609100106403'
 EVENT_TALK = '138311609000106303'
+DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
 
 logger = logging.getLogger('command')
 
 def post_text(send_to, content):
-    user = {'t': 20}
-    docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY, user=user)
+    #user = {'t': 20}
+    docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
     docomo_res = docomo_client.send(utt=content,apiname='Dialogue')
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -37,6 +38,37 @@ def post_text(send_to, content):
         }
     }
     print('request')
+    req = requests.post(ENDPOINT, headers=headers, data=json.dumps(payload))
+    print (json.dumps(payload))
+    print (json.dumps(headers))
+    print('request')
+    print(req.__dict__)
+
+def post_question(send_to, question):
+    #docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
+    #docomo_res = docomo_client.send(q=question, apiname='Dialogue')
+    options = {
+    'APIKEY': '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33',
+    'q': urllib.quote(question)
+    }
+    docomo_res = requests.get(DOCOMO_ENDPOINT, params=options)
+    headers = {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'X-Line-ChannelID': "1480426345",
+        'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
+        'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
+    }
+    payload = {
+    'toChannel': 1383378250,
+    'eventType': '138311608800106203',
+    'to': send_to,
+    'content': {
+       "contentType":1,
+       "toType":1,
+       "text":docomo_res['message']['textForDisplay'],
+       }
+    }
+    print('post_question')
     req = requests.post(ENDPOINT, headers=headers, data=json.dumps(payload))
     print (json.dumps(payload))
     print (json.dumps(headers))
@@ -135,7 +167,7 @@ def response_to_talk(send_to, result):
        if('みお' in result['content']['text']):
               post_image(send_to)
        else:
-              post_text(send_to, text)
+              post_question(send_to, text)
     elif content_type == 8:
        print("this is sticker request")
        post_sticker(send_to)
