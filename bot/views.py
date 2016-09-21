@@ -3,7 +3,6 @@ from django.shortcuts import render
 import os
 import json
 import random
-import logging
 import doco.client
 import requests
 from django.http import JsonResponse
@@ -19,10 +18,7 @@ EVENT_TALK = '138311609000106303'
 DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
 MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/api/ask'
 
-logger = logging.getLogger('command')
-
 def post_text(send_to, content):
-    #user = {'t': 20}
     #雑談
     docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
     docomo_res = docomo_client.send(utt=content,apiname='Dialogue')
@@ -40,16 +36,16 @@ def post_text(send_to, content):
         'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
-    #編集距離を算出
-    print('line44')
-    #q_user_li = janome_morpheme(q['q'])
-    print('after line44')
-    for res in mizu_res[0]['q']:
-      res_li = janome_morpheme(res)
-      distance_li = editdistance.eval(q_user_li, res_li)
+    # 編集距離を算出
+    # print('line44')
+    # q_user_li = janome_morpheme(q['q'])
+    # print('after line44')
+    # for res in mizu_res[0]['q']:
+    #   res_li = janome_morpheme(res)
+    #   distance_li = editdistance.eval(q_user_li, res_li)
 
-    print('line 51')
-    print(distance_li)
+    # print('line 51')
+    # print(distance_li)
 
     if mizu_res != []:
           output = mizu_res[0]['a'][0]
