@@ -9,6 +9,8 @@ import requests
 from django.http import JsonResponse
 from django.views.generic import View
 import urllib
+import editdistance
+from bot import morpheme
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
@@ -31,13 +33,21 @@ def post_text(send_to, content):
     }
     docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
     q = {'q': content}
-    mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
+    mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text) #qに対するaが返される
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'X-Line-ChannelID': "1480426345",
         'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
+    #編集距離を算出
+    #最短の文字列が返される
+    q_user_li = mecab_morpheme(q['q'])
+    i = 0
+    for res in mizu_res[0]['q']:
+      distance_li = editdistance.eval(q_user_li, res)
+    print(distance_li)
+
     if mizu_res != []:
           output = mizu_res[0]['a'][0]
     elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
