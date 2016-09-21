@@ -10,7 +10,7 @@ from django.http import JsonResponse
 from django.views.generic import View
 import urllib
 import editdistance
-from bot import morpheme
+from janome.tokenizer import Tokenizer
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
@@ -42,7 +42,7 @@ def post_text(send_to, content):
     }
     #編集距離を算出
     print('line44')
-    q_user_li = janome_morpheme(q['q'])
+    #q_user_li = janome_morpheme(q['q'])
     print('after line44')
     for res in mizu_res[0]['q']:
       res_li = janome_morpheme(res)
@@ -203,6 +203,11 @@ def response_to_talk(send_to, result):
        print("this require me to send image")
        post_image(send_to)
 
+def janome_morpheme(sentence):
+  t = Tokenizer()
+  tokens = t.tokenize(sentence)
+  li = [token.surface for token in tokens]
+  return li
 
 def post_test(request):
   return render(request, 'post_test.html')
