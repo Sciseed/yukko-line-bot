@@ -47,6 +47,8 @@ def post_text(send_to, content):
     for res in mizu_res[0]['q']:
       res_li = janome_morpheme(res)
       distance_li = editdistance.eval(q_user_li, res_li)
+
+    print('line 51')
     print(distance_li)
 
     if mizu_res != []:
