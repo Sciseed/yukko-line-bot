@@ -56,7 +56,7 @@ def make_output(content):
   return output
 
 def mecab_morpheme(sentence):
-  m = MeCab.Tagger("-Owakati")
+  m = MeCab.Tagger("-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd")
   wakati = m.parse(sentence)
   li = wakati.split(' ')
   return li
@@ -68,6 +68,6 @@ def janome_morpheme(sentence):
   return li
 
 if __name__ == "__main__":
-  content = ""
+  content = "サイシードって何ですか？笑"
   output = make_output(content)
   print(output)
