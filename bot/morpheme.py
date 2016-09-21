@@ -1,8 +1,8 @@
 import sys
-import MeCab
+from janome.tokenizer import Tokenizer
 
-def mecab_morpheme(sentence):
-  m = MeCab.Tagger("-Owakati")
-  a = m.parse("sentence")
-  li = a.split(' ')
+def janome_morpheme(sentence):
+  t = Tokenizer()
+  tokens = t.tokenize(u(sentence))
+  li = [token.surface for token in tokens]
   return li

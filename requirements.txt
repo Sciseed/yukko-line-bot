@@ -6,7 +6,5 @@ psycopg2==2.6.2
 gunicorn==19.6.0
 requests==2.11.1
 doco==0.0.3
-mecab of 0.996
-mecab-python3==0.7
-mecab-ipadic
 editdistance==0.3.1
+janome==0.2.8
