@@ -4,6 +4,7 @@ import json
 import requests
 import editdistance
 import doco.client
+import MeCab
 
 DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
 MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/api/ask'
@@ -27,29 +28,38 @@ def make_output(content):
   #入力をMIZU APIに投げる→回答リストを取得
   mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
   #質問を形態素解析して単語ごとにリスト化
-  q_user_li = janome_morpheme(q['q'])
+  #q_user_li = janome_morpheme(q['q'])
+  q_user_li = mecab_morpheme(q['q'])
   print(q_user_li)
+  distance_li = []
   for res in mizu_res[0]['q']:
     #回答の要素を形態素解析
-    res_li = janome_morpheme(res)
+    #res_li = janome_morpheme(res)
+    res_li = mecab_morpheme(res)
     print(res_li)
     distance = editdistance.eval(q_user_li, res_li)
-    distance_li = []
     distance_li.append(distance)
   #編集距離最短のindexを取得
-  return distance_li
-  # n = distance_li.index(min(distance_li))
-  # min_dis_ans = mizu_res[0]['q'][n]
+  #return distance_li
+  print(distance_li)
+  n = distance_li.index(min(distance_li))
+  min_dis_ans = mizu_res[0]['a'][n]
 
-  # #outputの選択
-  # if mizu_res != []:
-  #       output = min_dis_ans
-  # elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
-  #     output = docomo_res['utt']
-  # else:
-  #     output = docomo_res_q['message']['textForDisplay']
+  #outputの選択
+  if mizu_res != []:
+        output = min_dis_ans
+  elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
+      output = docomo_res['utt']
+  else:
+      output = docomo_res_q['message']['textForDisplay']
 
-  # return output
+  return output
+
+def mecab_morpheme(sentence):
+  m = MeCab.Tagger("-Owakati")
+  wakati = m.parse(sentence)
+  li = wakati.split(' ')
+  return li
 
 def janome_morpheme(sentence):
   t = Tokenizer()
@@ -58,6 +68,6 @@ def janome_morpheme(sentence):
   return li
 
 if __name__ == "__main__":
-  content = "インターンって何ですか？"
+  content = ""
   output = make_output(content)
   print(output)

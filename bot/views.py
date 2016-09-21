@@ -10,6 +10,7 @@ from django.views.generic import View
 import urllib
 import editdistance
 from janome.tokenizer import Tokenizer
+import mecab_test
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
@@ -28,7 +29,7 @@ def post_text(send_to, content):
     'q': content
     }
     docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
-    q = {'q': content}
+    #q = {'q': content}
     mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text) #qに対するaが返される
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -47,12 +48,13 @@ def post_text(send_to, content):
     # print('line 51')
     # print(distance_li)
 
-    if mizu_res != []:
-          output = mizu_res[0]['a'][0]
-    elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
-        output = docomo_res['utt']
-    else:
-        output = docomo_res_q['message']['textForDisplay']
+    # if mizu_res != []:
+    #       output = mizu_res[0]['a'][0]
+    # elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
+    #     output = docomo_res['utt']
+    # else:
+    #     output = docomo_res_q['message']['textForDisplay']
+    output = make_output(content)
     payload = {
         'toChannel': 1383378250,
         'eventType': '138311608800106203',
