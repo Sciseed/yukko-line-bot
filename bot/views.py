@@ -42,12 +42,12 @@ def post_text(send_to, content):
     }
     #編集距離を算出
     #最短の文字列が返される
-    q_user_li = janome_morpheme(q['q'])
-    i = 0
-    for res in mizu_res[0]['q']:
-      res_li = janome_morpheme(res)
-      distance_li = editdistance.eval(q_user_li, res_li)
-    print(distance_li)
+    # q_user_li = janome_morpheme(q['q'])
+    # i = 0
+    # for res in mizu_res[0]['q']:
+    #   res_li = janome_morpheme(res)
+    #   distance_li = editdistance.eval(q_user_li, res_li)
+    # print(distance_li)
 
     if mizu_res != []:
           output = mizu_res[0]['a'][0]
