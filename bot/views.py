@@ -41,7 +41,7 @@ def post_text(send_to, content):
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
     #編集距離を算出
-    #最短の文字列が返される
+    print('line44')
     q_user_li = janome_morpheme(q['q'])
     i = 0
     for res in mizu_res[0]['q']:
