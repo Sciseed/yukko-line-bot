@@ -32,6 +32,7 @@ def make_output(content):
   q_user_li = mecab_morpheme(q['q'])
   print(q_user_li)
   distance_li = []
+  print(mizu_res[0]['a'])
   for res in mizu_res[0]['q']:
     #回答の要素を形態素解析
     #res_li = janome_morpheme(res)
@@ -68,6 +69,6 @@ def janome_morpheme(sentence):
   return li
 
 if __name__ == "__main__":
-  content = "サイシードって何ですか？笑"
+  content = "リクルーターって何ですか？"
   output = make_output(content)
   print(output)
