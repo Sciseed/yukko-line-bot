@@ -26,39 +26,9 @@ def make_output(content):
   }
   docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
   mizu_res = []
-  #入力をMIZU APIに投げる→回答リストを取得
-  # try:
-  #   mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
-  #   #質問を形態素解析して単語ごとにリスト化
-  #   #q_user_li = janome_morpheme(q['q'])
-  #   q_user_li = janome_morpheme(q['q'])
-  #   # print(q_user_li)
-  #   distance_li = []
-  #   # print(mizu_res[0]['a'])
-  #   for res in mizu_res[0]['q']:
-  #     #回答の要素を形態素解析
-  #     #res_li = janome_morpheme(res)
-  #     res_li = janome_morpheme(res)
-  #     # print(res_li)
-  #     distance = editdistance.eval(q_user_li, res_li)
-  #     distance_li.append(distance)
-  #   #編集距離最短のindexを取得
-  #   #return distance_li
-  #   # print(distance_li)
-  #   n = distance_li.index(min(distance_li))
-  #   min_dis_ans = mizu_res[0]['a'][n]
-  # except:
-  #   print('mizu_res : value error')
 
-  # #outputの選択
-  # if mizu_res != []:
-  #       output = min_dis_ans
-  # elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
-  #     output = docomo_res['utt']
-  # else:
-  #     output = docomo_res_q['message']['textForDisplay']
 
-  if 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
+  if 'わかりませんでした' in docomo_res_q['message']['text']:
     output = docomo_res['utt']
   else:
     output = docomo_res_q['message']['textForDisplay']
