@@ -5,6 +5,7 @@ import requests
 import editdistance
 import doco.client
 import MeCab
+from bot import automaton
 
 DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
 MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/api/ask'
@@ -31,28 +32,47 @@ def make_output(content):
     mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
     #質問を形態素解析して単語ごとにリスト化
     #q_user_li = janome_morpheme(q['q'])
-    q_user_li = janome_morpheme(q['q'])
-    # print(q_user_li)
+    answerType_q = automaton.make_flag(q['q'])
     distance_li = []
-    # print(mizu_res[0]['a'])
-    for res in mizu_res[0]['q']:
-      #回答の要素を形態素解析
-      #res_li = janome_morpheme(res)
-      res_li = janome_morpheme(res)
-      # print(res_li)
-      distance = editdistance.eval(q_user_li, res_li)
-      distance_li.append(distance)
-    #編集距離最短のindexを取得
-    #return distance_li
-    # print(distance_li)
-    n = distance_li.index(min(distance_li))
-    min_dis_ans = mizu_res[0]['a'][n]
+    sentaku_list = []
+    aaa_list = []
+    kotae_list = []
+    for k in mizu_res:
+      for res in k['q']:
+        print(res)
+        answerType_res = automaton.make_flag(res)
+        if answerType_res == answerType_q:
+          sentaku_list.append(res)
+          aaa_list.append(1)
+        else:
+          aaa_list.append(0)
+        #回答の要素を形態素解析
+        # res_li = janome_morpheme(res)
+        # print(res_li)
+        # distance = editdistance.eval(q_user_li, res_li)
+        # distance_li.append(distance)
+      #編集距離最短のindexを取得
+      # print(distance_li)
+      # n = distance_li.index(min(distance_li))
+      # min_dis_ans = mizu_res[0]['a'][n]
+    print(sentaku_list)
+    print(aaa_list)
+    j = 0
+    for kkk in aaa_list:
+      if kkk == 1:
+        kotae_list.append(mizu_res[j]['a'])
+        j += 1
+      else:
+        j += 1
+        continue
+
+    print(kotae_list)
   except:
     print('mizu_res : value error')
 
   #outputの選択
-  if mizu_res != []:
-        output = min_dis_ans
+  if kotae_list != []:
+        output = kotae_list[0]
   elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
       output = docomo_res['utt']
   else:
