@@ -31,14 +31,14 @@ def make_output(content):
     mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
     #質問を形態素解析して単語ごとにリスト化
     #q_user_li = janome_morpheme(q['q'])
-    q_user_li = mecab_morpheme(q['q'])
+    q_user_li = janome_morpheme(q['q'])
     # print(q_user_li)
     distance_li = []
     # print(mizu_res[0]['a'])
     for res in mizu_res[0]['q']:
       #回答の要素を形態素解析
       #res_li = janome_morpheme(res)
-      res_li = mecab_morpheme(res)
+      res_li = janome_morpheme(res)
       # print(res_li)
       distance = editdistance.eval(q_user_li, res_li)
       distance_li.append(distance)
