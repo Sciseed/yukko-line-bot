@@ -58,6 +58,8 @@ def make_output(content):
   else:
       output = docomo_res_q['message']['textForDisplay']
 
+  return output
+
 def mecab_morpheme(sentence):
   m = MeCab.Tagger("-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd")
   wakati = m.parse(sentence)

@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.views.generic import View
 import urllib
 import editdistance
-#from bot import mecab_test
+from bot import mecab_test
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
@@ -26,21 +26,15 @@ def post_text(send_to, content):
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
     #雑談
-    docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
-    docomo_res = docomo_client.send(utt=content,apiname='Dialogue')
-    options = {
-      'APIKEY': '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33',
-      'q': content
-    }
-    docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
+    # docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
+    # docomo_res = docomo_client.send(utt=content,apiname='Dialogue')
+    # options = {
+    #   'APIKEY': '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33',
+    #   'q': content
+    # }
+    # docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
     #q = {'q': content}
     #mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text) #qに対するaが返される
-    headers = {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'X-Line-ChannelID': "1480426345",
-        'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
-        'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
-    }
     # 編集距離を算出
     # print('line44')
     # q_user_li = janome_morpheme(q['q'])
@@ -59,10 +53,10 @@ def post_text(send_to, content):
     # else:
     #     output = docomo_res_q['message']['textForDisplay']
     # output = make_output(content)
-    if 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
-        output = docomo_res['utt']
-    else:
-        output = docomo_res_q['message']['textForDisplay']
+    # if 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
+    #     output = docomo_res['utt']
+    # else:
+    #     output = docomo_res_q['message']['textForDisplay']
     payload = {
         'toChannel': 1383378250,
         'eventType': '138311608800106203',
@@ -70,7 +64,7 @@ def post_text(send_to, content):
         'content': {
            "contentType":1,
            "toType":1,
-           "text": output,
+           "text": mecab_test.make_output(content),
         }
     }
     print('request')
