@@ -10,7 +10,7 @@ from django.views.generic import View
 import urllib
 import editdistance
 from janome.tokenizer import Tokenizer
-import mecab_test
+from bot import mecab_test
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
