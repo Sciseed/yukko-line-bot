@@ -9,7 +9,6 @@ from django.http import JsonResponse
 from django.views.generic import View
 import urllib
 import editdistance
-from janome.tokenizer import Tokenizer
 from bot import mecab_test
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
