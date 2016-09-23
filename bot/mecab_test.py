@@ -67,8 +67,3 @@ def janome_morpheme(sentence):
   tokens = t.tokenize(sentence)
   li = [token.surface for token in tokens]
   return li
-
-if __name__ == "__main__":
-  content = "リクルーターって何ですか？"
-  output = make_output(content)
-  print(output)
