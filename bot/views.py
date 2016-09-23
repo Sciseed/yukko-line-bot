@@ -29,7 +29,7 @@ def post_text(send_to, content):
     'q': content
     }
     docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
-    #q = {'q': content}
+    q = {'q': content}
     mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text) #qに対するaが返される
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
