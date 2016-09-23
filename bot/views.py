@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.views.generic import View
 import urllib
 import editdistance
-from bot import mecab_test
+#from bot import mecab_test
 
 ENDPOINT = 'https://trialbot-api.line.me/v1/events'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
@@ -26,7 +26,35 @@ def post_text(send_to, content):
         'X-Line-ChannelSecret': '37df4c7d811276edf33c741471f9f906',
         'X-Line-Trusted-User-With-ACL': 'ufbb1954b3357ab82f558b1e695096212'
     }
-    output = mecab_test.make_output(content)
+    #output = mecab_test.make_output(content)
+    payload = {
+        'toChannel': 1383378250,
+        'eventType': '138311608800106203',
+        'to': send_to,
+        'content': {
+           "contentType":1,
+           "toType":1,
+           "text": output,
+        }
+    }
+
+    #ユーザーの入力をqに格納
+    q = {'q': content}
+    docomo_client = doco.client.Client(apikey=DOCOMO_API_KEY)
+
+    #入力をdocomo apiに投げる
+    docomo_res = docomo_client.send(utt=content,apiname='Dialogue')
+    #入力をdocomo api Q&Aに投げる
+    docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
+    options = {
+    'APIKEY': '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33',
+    'q': content
+    }
+    elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
+        output = docomo_res['utt']
+    else:
+        output = docomo_res_q['message']['textForDisplay']
+
     payload = {
         'toChannel': 1383378250,
         'eventType': '138311608800106203',
