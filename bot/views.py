@@ -38,11 +38,10 @@ def post_text(send_to, content):
            "text": output,
         }
     }
-    print('request')
+    print(payload['content']['text'])
     req = requests.post(ENDPOINT, headers=headers, data=json.dumps(payload))
     print (json.dumps(payload))
     print (json.dumps(headers))
-    print('request')
     print(req.__dict__)
 
 def post_question(send_to, question):
