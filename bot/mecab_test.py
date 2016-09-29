@@ -10,7 +10,7 @@ import codecs
 import csv
 
 DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
-MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com'
+MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/api/ask'
 DOCOMO_API_KEY = '6255615075614d4a3455552f57546d583366686d3332314746456e6e49714a49464d43325a667561685a33'
 
 
