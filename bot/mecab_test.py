@@ -5,7 +5,6 @@ import json
 import requests
 import editdistance
 import doco.client
-import automaton
 import pandas
 import codecs
 import cross_layer
