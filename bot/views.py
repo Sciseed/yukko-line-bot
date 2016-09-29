@@ -58,6 +58,7 @@ def post_text(send_to, content):
     # else:
     #     output = docomo_res_q['message']['textForDisplay']
     print(content)
+    output = mecab_test.make_output(content)
     payload = {
         'toChannel': 1383378250,
         'eventType': '138311608800106203',
@@ -65,7 +66,7 @@ def post_text(send_to, content):
         'content': {
            "contentType":1,
            "toType":1,
-           "text": mecab_test.make_output(content),
+           "text": output
         }
     }
     print('request')

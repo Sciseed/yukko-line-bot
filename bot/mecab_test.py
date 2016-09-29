@@ -118,3 +118,6 @@ def make_output(content):
 #       writer.writerow(flag)
 #     g.close()
 
+if __name__ == '__main__':
+  content = input()
+  print(make_output(content))
