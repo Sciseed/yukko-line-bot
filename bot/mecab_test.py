@@ -73,9 +73,9 @@ def make_output(content):
   if mizu_res != []:
         output = mizu_res[0]['a']
   elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
-      output = docomo_res['utt']
+      output = [docomo_res['utt']]
   else:
-      output = docomo_res_q['message']['textForDisplay']
+      output = [docomo_res_q['message']['textForDisplay']]
 
   return output
 
