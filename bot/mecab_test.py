@@ -29,6 +29,7 @@ def make_output(content):
   mizu_res = []
   #入力をMIZU APIに投げる→回答リストを取得
   try:
+    print(requests.get(MIZU_ENDPOINT, params=q).text)
     mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
   #   #質問を形態素解析して単語ごとにリスト化
   #   #q_user_li = janome_morpheme(q['q'])
