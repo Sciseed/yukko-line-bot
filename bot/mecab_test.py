@@ -1,12 +1,10 @@
 #coding: utf-8
 
 import sys
-from janome.tokenizer import Tokenizer
 import json
 import requests
 import editdistance
 import doco.client
-import MeCab
 import automaton
 import pandas
 import codecs
