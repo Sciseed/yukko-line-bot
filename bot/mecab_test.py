@@ -70,7 +70,7 @@ def make_output(content):
     print('mizu_res : value error')
 
   #outputの選択
-  if mizu_res != []:
+  if mizu_res != '':
         output = mizu_res[0]['a']
   elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
       output = [docomo_res['utt']]
@@ -109,16 +109,15 @@ def make_output(content):
 #     df = pandas.read_table(file, delimiter=",")
 #     print(df['script'])
 
-# def output_csv(csv_file):
-#   with codecs.open(csv_file, "r", "utf-8", "ignore") as file:
-#     df = pandas.read_table(file, delimiter=",")
-#     g = open('result_recent_message.csv', 'w')
-#     writer = csv.writer(g)
-#     for script in df.iloc[:,1]:
-#       flag = cross_layer.make_flag(script)
-#       writer.writerow(flag)
-#     g.close()
+def output_csv(csv_file):
+  with codecs.open(csv_file, "r", "utf-8", "ignore") as file:
+    df = pandas.read_table(file, delimiter=",")
+    g = open('result_recent_message.csv', 'w')
+    writer = csv.writer(g)
+    for script in df.iloc[:,1]:
+      flag = cross_layer.make_flag(script)
+      writer.writerow(flag)
+    g.close()
 
 if __name__ == '__main__':
-  content = input()
-  print(make_output(content))
+  output_csv(recent_message_list.csv)
