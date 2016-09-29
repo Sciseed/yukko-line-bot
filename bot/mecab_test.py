@@ -8,6 +8,7 @@ import doco.client
 import pandas
 import codecs
 import csv
+import cross_layer
 
 DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
 MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/api/ask'
@@ -70,7 +71,7 @@ def make_output(content):
     print('mizu_res : value error')
 
   #outputの選択
-  if mizu_res[0]['a'] != []:
+  if (mizu_res != [])or(mizu_res[0]['a'] != []):
         output = mizu_res[0]['a']
   elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
       output = [docomo_res['utt']]
@@ -120,4 +121,4 @@ def output_csv(csv_file):
     g.close()
 
 if __name__ == '__main__':
-  output_csv(recent_message_list.csv)
+  output_csv('recent_message_list.csv')
