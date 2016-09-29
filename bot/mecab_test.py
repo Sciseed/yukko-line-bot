@@ -119,14 +119,3 @@ def output_csv(csv_file):
       flag = cross_layer.make_flag(script)
       writer.writerow(flag)
     g.close()
-
-if __name__ == '__main__':
-  content = input()
-  # output = make_output(content)
-  # print(output)
-  # print_csv('talkscript.csv')
-  # input_csv_to_automaton('talkscript.csv')
-  # output_csv('recent_message_list.csv')
-  q = {'q': content}
-  candidates = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
-  cross_layer.rank_message_candidates(q['q'], candidates)
