@@ -7,7 +7,7 @@ import editdistance
 import doco.client
 import pandas
 import codecs
-import cross_layer
+# import cross_layer
 import csv
 
 DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
