@@ -8,7 +8,6 @@ import doco.client
 import pandas
 import codecs
 import csv
-import cross_layer
 
 DOCOMO_ENDPOINT = 'https://api.apigw.smt.docomo.ne.jp/knowledgeQA/v1/ask'
 MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/api/ask'
