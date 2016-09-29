@@ -70,7 +70,7 @@ def make_output(content):
     print('mizu_res : value error')
 
   #outputの選択
-  if mizu_res != []:
+  if (mizu_res != []) or (mizu_res[0]['q'] != []):
         output = mizu_res[0]['a']
   elif 'わかりませんでした' in docomo_res_q['message']['textForDisplay']:
       output = [docomo_res['utt']]
