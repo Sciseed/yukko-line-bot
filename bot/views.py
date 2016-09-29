@@ -57,6 +57,7 @@ def post_text(send_to, content):
     #     output = docomo_res['utt']
     # else:
     #     output = docomo_res_q['message']['textForDisplay']
+    print(content)
     payload = {
         'toChannel': 1383378250,
         'eventType': '138311608800106203',
