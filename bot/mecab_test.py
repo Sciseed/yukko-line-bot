@@ -29,8 +29,8 @@ def make_output(content):
   docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
   mizu_res = []
   #入力をMIZU APIに投げる→回答リストを取得
-  # try:
-  mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
+  try:
+    mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
   #   #質問を形態素解析して単語ごとにリスト化
   #   #q_user_li = janome_morpheme(q['q'])
   #   answerType_q = automaton.make_flag(q['q'])
@@ -66,8 +66,8 @@ def make_output(content):
   #       continue
 
   #   print(kotae_list)
-  # except:
-  #   print('mizu_res : value error')
+  except:
+    print('mizu_res : value error')
 
   #outputの選択
   if mizu_res != []:
