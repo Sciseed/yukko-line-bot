@@ -85,11 +85,11 @@ def post_carousel(reply_token):
                 "template": {
                     "type": "carousel",
                     "columns": [
-     
+
                         {
-                          "thumbnailImageUrl": "https://nekogazou.com/wp-content/uploads/2015/10/4ab5442a6d977922bcbe8850ff4b40bc.jpg",
-                          "title": "this is menu",
-                          "text": "description",
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/hamburger_240.jpeg",
+                          "title": "ジャンク・バーガー",
+                          "text": "誰が何と言おうとジャンクフードの王様は、今も昔も変わらずハンバーガー。",
                           "actions": [
                               {
                                   "type": "postback",
