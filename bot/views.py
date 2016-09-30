@@ -112,7 +112,20 @@ def post_carousel(reply_token):
                               }
                           ]
                         },
-                  
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/bread_240.jpeg",
+                          "title": "本格パン工房 たけよし",
+                          "text": "パンにとって一番大事だと思うものはなんですか？たけよしは、表面の焼き上がりこそが命であると考えています。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        },
+ 
            
                     ]
                 }
