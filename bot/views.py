@@ -86,18 +86,40 @@ def post_carousel(reply_token):
                     "type": "carousel",
                     "columns": [
                         {
-                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/pizza_240.jpeg",
-                          "title": "pizza cap",
-                          "text": "本場ナポリの味を早く、安く。都内に17店舗展開するピザ専門店です。使用する野菜はすべて無農薬栽培、生地に使用する小麦も契約農家からAランクのみを仕入れるなど、素材には絶対の自信があります。メニューが3種類しかないのはpizza capの自信の表れ。本物のピザだけをご用意して、ご来店をお待ちしております。",
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/hamburger_240.jpeg",
+                          "title": "ジャンク・バーガー",
+                          "text": "誰が何と言おうとジャンクフードの王様は、今も昔も変わらずハンバーガー。",
                           "actions": [
                           
                               {
                                   "type": "uri",
                                   "label": "詳細を見る",
-                                  "uri": "https://s3-us-west-2.amazonaws.com/lineapitest/pizza.jpeg"
+                                  "uri": "https://s3-us-west-2.amazonaws.com/lineapitest/hamburger.jpeg"
                               }
                           ]
                         },
+                        {
+                          "thumbnailImageUrl": "https://nekogazou.com/wp-content/uploads/2015/10/4ab5442a6d977922bcbe8850ff4b40bc.jpg",
+                          "title": "this is menu",
+                          "text": "description",
+                          "actions": [
+                              {
+                                  "type": "postback",
+                                  "label": "Buy",
+                                  "data": "action=buy&itemid=222"
+                              },
+                              {
+                                  "type": "postback",
+                                  "label": "Add to cart",
+                                  "data": "action=add&itemid=222"
+                              },
+                              {
+                                  "type": "uri",
+                                  "label": "View detail",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        }
            
                     ]
                 }
