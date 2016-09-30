@@ -181,6 +181,7 @@ def post_text(reply_token, text):
 
 #Messaging API版
 def dispose(events):
+  print('This is dispose request')
   for event in events:
     reply_token = event['replyToken']
     event_type = event['type']
