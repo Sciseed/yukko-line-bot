@@ -49,6 +49,7 @@ MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/a
 
 # Messaging API版
 def post_text(reply_token, text):
+    print("enter post text")
     header = {
         'Content-Type: application/json',
         'Authorization: Bearer {CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU=}',
@@ -64,7 +65,10 @@ def post_text(reply_token, text):
               }
           ]
     }
+    print("reply token: "+reply_token)
     req = requests.post(REPLY_ENDPOINT, headers=headers, data=json.dumps(payload))
+    print("req done")
+    print(req)
 
 
 # def post_question(send_to, question):
@@ -209,6 +213,7 @@ def dispose(events):
 
 #Messaging API
 def response_to_talk(reply_token, event):
+  print("enter response to talk")
   text = event['message']['text']
   post_text(reply_token, text)
 
