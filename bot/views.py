@@ -211,9 +211,6 @@ def response_to_talk(reply_token, event):
   text = event['message']['text']
   post_text(reply_token, text)
 
-      #Messaging API版
-      dispose(json.loads(request.body.decode('utf-8'))['events'])
-
 def post_test(request):
   return render(request, 'post_test.html')
 
@@ -226,5 +223,4 @@ class HelloView(View):
     def post(self, request, *args, **kwargs):
       #Trial版
       dispose(json.loads(request.body.decode("utf-8"))['result'])
-      print(json.loads(request.body.decode("utf-8"))['result'])
       return JsonResponse({'kosuke': 'suzuki'})
