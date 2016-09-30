@@ -99,7 +99,20 @@ def post_carousel(reply_token):
                               }
                           ]
                         },
-                        
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/pizza_240.jpeg",
+                          "title": "pizza cap",
+                          "text": "本場ナポリの味を早く、安く。都内に17店舗展開するピザ専門店です。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        },
+                  
            
                     ]
                 }
