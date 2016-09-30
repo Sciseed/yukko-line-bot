@@ -225,4 +225,5 @@ class HelloView(View):
       print('This is post request')
       #Trial版
       dispose(json.loads(request.body.decode("utf-8"))['events'])
+      print(json.loads(request.body.decode("utf-8"))['events'])
       return JsonResponse({'kosuke': 'suzuki'})
