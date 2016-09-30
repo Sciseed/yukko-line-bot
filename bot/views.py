@@ -222,7 +222,7 @@ class HelloView(View):
         return JsonResponse({'suzuki':'kosuke'})
 
     def post(self, request, *args, **kwargs):
-      print('hello')
+      print('This is post request')
       #Trial版
-      # dispose(json.loads(request.body.decode("utf-8"))['result'])
+      dispose(json.loads(request.body.decode("utf-8"))['events'])
       return JsonResponse({'kosuke': 'suzuki'})
