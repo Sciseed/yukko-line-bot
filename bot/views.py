@@ -223,6 +223,7 @@ class HelloView(View):
 
     def post(self, request, *args, **kwargs):
       print('This is post request')
+      print(request.body.decode("utf-8"))
       #Trial版
       dispose(json.loads(request.body.decode("utf-8"))['events'])
       print(json.loads(request.body.decode("utf-8"))['events'])
