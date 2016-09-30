@@ -357,7 +357,7 @@ def response_to_talk(reply_token, event):
   print("enter response to talk")
   text = event['message']['text']
   if 'イメージくれ' in text:
-    post_confirm(reply_token)
+    post_imagemap(reply_token)
   else:
     post_text(reply_token, text)
 
