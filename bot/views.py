@@ -88,7 +88,7 @@ def post_carousel(reply_token):
                     "type": "carousel",
                     "columns": [
                         {
-                          "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+                          "thumbnailImageUrl": "https://www.google.co.jp/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=&url=http%3A%2F%2Fwww.hpfrance.com%2FBlog%2FMasami%2Fimages%2F%25E9%259B%25AA%25E7%258C%25AB__.JPG&psig=AFQjCNH4YD8jFu_MDALKV38JEYivKrA07Q&ust=1475299168321402",
                           "title": "this is menu",
                           "text": "description",
                           "actions": [
@@ -110,7 +110,7 @@ def post_carousel(reply_token):
                           ]
                         },
                         {
-                          "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                          "thumbnailImageUrl": "https://nekogazou.com/wp-content/uploads/2015/10/4ab5442a6d977922bcbe8850ff4b40bc.jpg",
                           "title": "this is menu",
                           "text": "description",
                           "actions": [
