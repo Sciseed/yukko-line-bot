@@ -223,5 +223,5 @@ class HelloView(View):
         return JsonResponse({'suzuki':'kosuke'})
 
     def post(self, request, *args, **kwargs):
-      dispose(json.loads(request.body.decode("utf-8"))['result'])
+      #dispose(json.loads(request.body.decode("utf-8"))['result'])
       return JsonResponse({'kosuke': 'suzuki'})
