@@ -144,33 +144,27 @@ def post_confirm(reply_token):
     payload = {
           "replyToken":reply_token,
           "messages":[
-              {
-                "type": "template",
-                "altText": "this is a carousel template",
-                "template": {
-                    "type": "carousel",
-                    "columns": [
+            {
+              "type": "template",
+              "altText": "this is a confirm template",
+              "template": {
+                  "type": "confirm",
+                  "text": "男性ですか？女性ですか？",
+                  "actions": [
                       {
-                        "type": "template",
-                        "altText": "this is a confirm template",
-                        "template": {
-                            "type": "confirm",
-                            "text": "男性ですか？女性ですか？",
-                            "actions": [
-                                {
-                                  "type": "message",
-                                  "label": "Man",
-                                  "text": "男性"
-                                },
-                                {
-                                  "type": "message",
-                                  "label": "Woman",
-                                  "text": "女性"
-                                }
-                            ]
-                        }
+                        "type": "message",
+                        "label": "Man",
+                        "text": "男性"
+                      },
+                      {
+                        "type": "message",
+                        "label": "Woman",
+                        "text": "女性"
                       }
-                    ]
+                  ]
+              }
+            }
+          ]
     }
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
 
@@ -320,7 +314,7 @@ def response_to_talk(reply_token, event):
   print("enter response to talk")
   text = event['message']['text']
   if 'コンファーム' in text:
-    post_carousel(reply_token)
+    post_confirm(reply_token)
   else:
     post_text(reply_token, text)
 
