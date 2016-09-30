@@ -209,7 +209,7 @@ def dispose(events):
 def response_to_talk(reply_token, event):
   print("enter response to talk")
   text = event['message']['text']
-  if '焼き鯖' in text:
+  if 'やきさば' in text:
     post_image(reply_token)
   elif 'カルーセル' in text:
     post_carousel(reply_token)
