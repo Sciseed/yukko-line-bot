@@ -66,6 +66,7 @@ def post_text(reply_token, text):
           ]
     }
     print("reply token: "+reply_token)
+    print(payload)
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
     print("req done")
     print(req)
