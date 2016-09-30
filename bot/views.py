@@ -136,6 +136,44 @@ def post_carousel(reply_token):
     }
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
 
+def post_confirm(reply_token):
+    header = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU="
+    }
+    payload = {
+          "replyToken":reply_token,
+          "messages":[
+              {
+                "type": "template",
+                "altText": "this is a carousel template",
+                "template": {
+                    "type": "carousel",
+                    "columns": [
+                      {
+                        "type": "template",
+                        "altText": "this is a confirm template",
+                        "template": {
+                            "type": "confirm",
+                            "text": "男性ですか？女性ですか？",
+                            "actions": [
+                                {
+                                  "type": "message",
+                                  "label": "Man",
+                                  "text": "男性"
+                                },
+                                {
+                                  "type": "message",
+                                  "label": "Woman",
+                                  "text": "女性"
+                                }
+                            ]
+                        }
+                      }
+                    ]
+    }
+    req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
+
 
 # def post_question(send_to, question):
 #     options = {
