@@ -146,11 +146,12 @@ def post_image(reply_token):
           "messages":[
               {
                   "type": "image",
-                  "originalContentUrl": "https://example.com/original.jpg",
+                  "originalContentUrl": "http://d2dcan0armyq93.cloudfront.net/photo/odai/400/b72db8c019e3e2ee8e7da084da2c3dfb_400.jpg",
                   "previewImageUrl": "https://example.com/preview.jpg"
               }
         ]
     }
+    print('This is post image')
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
 
 # def post_imagemap(reply_token):
