@@ -178,7 +178,7 @@ def post_imagemap(reply_token):
           "messages":[
             {
               "type": "imagemap",
-              "baseUrl": "https://example.com/bot/images/rm001",
+              "baseUrl": "http://blogimg.goo.ne.jp/user_image/03/1f/d4a55e24e0cd7993539025c25fe426b8.jpg",
               "altText": "this is an imagemap",
               "baseSize": {
                   "height": 1040,
@@ -187,7 +187,7 @@ def post_imagemap(reply_token):
               "actions": [
                   {
                       "type": "uri",
-                      "linkUri": "https://example.com/",
+                      "linkUri": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%90",
                       "area": {
                           "x": 0,
                           "y": 0,
@@ -197,7 +197,7 @@ def post_imagemap(reply_token):
                   },
                   {
                       "type": "message",
-                      "text": "hello",
+                      "text": "焼きそばだよ！！！！！",
                       "area": {
                           "x": 520,
                           "y": 0,
@@ -356,7 +356,7 @@ def dispose(events):
 def response_to_talk(reply_token, event):
   print("enter response to talk")
   text = event['message']['text']
-  if 'イメージくれ' in text:
+  if '焼き鯖' in text:
     post_imagemap(reply_token)
   else:
     post_text(reply_token, text)
