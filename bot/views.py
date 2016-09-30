@@ -146,8 +146,8 @@ def post_image(reply_token):
           "messages":[
               {
                   "type": "image",
-                  "originalContentUrl": "http://d13n9ry8xcpemi.cloudfront.net/photo/odai/400/38954183f63332c096fd11c7ed57e7a6_400.jpg",
-                  "previewImageUrl": "http://d13n9ry8xcpemi.cloudfront.net/photo/odai/400/38954183f63332c096fd11c7ed57e7a6_400.jpg"
+                  "originalContentUrl": "https://example.com/original.jpg",
+                  "previewImageUrl": "https://example.com/preview.jpg"
               }
         ]
     }
