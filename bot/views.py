@@ -81,54 +81,62 @@ def post_carousel(reply_token):
           "messages":[
               {
                 "type": "template",
-                "altText": "this is a carousel template",
+                "altText": "おすすめレストラン",
                 "template": {
                     "type": "carousel",
                     "columns": [
                         {
-                          "thumbnailImageUrl": "https://www.google.co.jp/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=&url=http%3A%2F%2Fwww.hpfrance.com%2FBlog%2FMasami%2Fimages%2F%25E9%259B%25AA%25E7%258C%25AB__.JPG&psig=AFQjCNH4YD8jFu_MDALKV38JEYivKrA07Q&ust=1475299168321402",
-                          "title": "this is menu",
-                          "text": "description",
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/pizza.jpeg",
+                          "title": "pizza cap",
+                          "text": "本場ナポリの味を早く、安く。都内に17店舗展開するピザ専門店です。使用する野菜はすべて無農薬栽培、生地に使用する小麦も契約農家からAランクのみを仕入れるなど、素材には絶対の自信があります。メニューが3種類しかないのはpizza capの自信の表れ。本物のピザだけをご用意して、ご来店をお待ちしております。",
                           "actions": [
-                              {
-                                  "type": "postback",
-                                  "label": "Buy",
-                                  "data": "action=buy&itemid=111"
-                              },
-                              {
-                                  "type": "postback",
-                                  "label": "Add to cart",
-                                  "data": "action=add&itemid=111"
-                              },
+                          
                               {
                                   "type": "uri",
-                                  "label": "View detail",
-                                  "uri": "http://example.com/page/111"
+                                  "label": "詳細を見る",
+                                  "uri": "https://s3-us-west-2.amazonaws.com/lineapitest/pizza.jpeg"
                               }
                           ]
                         },
                         {
-                          "thumbnailImageUrl": "https://nekogazou.com/wp-content/uploads/2015/10/4ab5442a6d977922bcbe8850ff4b40bc.jpg",
-                          "title": "this is menu",
-                          "text": "description",
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/bread.jpeg",
+                          "title": "本格パン工房 たけよし",
+                          "text": "パンにとって一番大事だと思うものはなんですか？たけよしは、表面の焼き上がりこそが命であると考えています。食欲をそそるきつね色の絶妙な焼き目、カリッとした心地よい食感。その食感を最大限に生かすため、当店のパン生地は全て米粉。外はカリッ、中はモチモチ。世界で最も幸せなギャップをお楽しみ下さい。",
                           "actions": [
-                              {
-                                  "type": "postback",
-                                  "label": "Buy",
-                                  "data": "action=buy&itemid=222"
-                              },
-                              {
-                                  "type": "postback",
-                                  "label": "Add to cart",
-                                  "data": "action=add&itemid=222"
-                              },
+                          
                               {
                                   "type": "uri",
-                                  "label": "View detail",
-                                  "uri": "http://example.com/page/222"
+                                  "label": "詳細を見る",
+                                  "uri": "https://s3-us-west-2.amazonaws.com/lineapitest/bread.jpeg"
                               }
                           ]
-                        }
+                        },
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/sushi.jpeg",
+                          "title": "ヴェトナムTokyo",
+                          "text": "1970年に東池袋にオープンしたベトナム料理の老舗。ミシュラン東京2014でも一ツ星を獲得するなど、40年以上の歴史を持ちながら、現代人の味覚に合わせたベトナム料理をご提供します。こだわりは、料理はもちろん内装にまで及び、インテリアを手掛けるのは現地では有名なあのHowell Vietnam。雰囲気まで、お召し上がり下さい。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "https://s3-us-west-2.amazonaws.com/lineapitest/sushi.jpeg"
+                              }
+                          ]
+                        },
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/hamburger.jpeg",
+                          "title": "ジャンク・バーガー",
+                          "text": "誰が何と言おうとジャンクフードの王様は、今も昔も変わらずハンバーガー。暴力的なまでにあふれ出る肉汁。ブラックペッパーの強烈なパンチ。食べごたえ抜群の分厚いバンズ。最近流行りのヘルシー志向に反旗を翻し、ハンバーガーと本気の決闘をしたい方、とっておきの対戦相手を用意してお待ちしています。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "https://s3-us-west-2.amazonaws.com/lineapitest/hamburger.jpeg"
+                              }
+                          ]
+                        },
                     ]
                 }
               }
@@ -356,9 +364,7 @@ def dispose(events):
 def response_to_talk(reply_token, event):
   print("enter response to talk")
   text = event['message']['text']
-  if '焼き鯖' in text:
-    post_imagemap(reply_token)
-  elif 'カルーセル' in text:
+  if ('レストラン' in text or 'ランチ' in text or 'ディナー' in text or '食べ物' in text) and ('おすすめ' in text or '教えて' in text):
     post_carousel(reply_token)
   else:
     post_text(reply_token, text)
