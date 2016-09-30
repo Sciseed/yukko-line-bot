@@ -212,8 +212,6 @@ def response_to_talk(reply_token, event):
   text = event['message']['text']
   if 'カルーセル' in text:
     post_carousel(reply_token)
-  elif 'カール' in text:
-    post_image(reply_token)
   else:
     post_text(reply_token, text)
 
