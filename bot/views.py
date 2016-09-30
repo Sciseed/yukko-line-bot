@@ -71,6 +71,73 @@ def post_text(reply_token, text):
     print("req done")
     print(req)
 
+def post_carousel(reply_token):
+    header = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU="
+    }
+    output = mecab_test.make_output(text)
+    payload_text = ''.join(output)
+    payload = {
+          "replyToken":reply_token,
+          "messages":[
+              {
+                "type": "template",
+                "altText": "this is a carousel template",
+                "template": {
+                    "type": "carousel",
+                    "columns": [
+                        {
+                          "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+                          "title": "this is menu",
+                          "text": "description",
+                          "actions": [
+                              {
+                                  "type": "postback",
+                                  "label": "Buy",
+                                  "data": "action=buy&itemid=111"
+                              },
+                              {
+                                  "type": "postback",
+                                  "label": "Add to cart",
+                                  "data": "action=add&itemid=111"
+                              },
+                              {
+                                  "type": "uri",
+                                  "label": "View detail",
+                                  "uri": "http://example.com/page/111"
+                              }
+                          ]
+                        },
+                        {
+                          "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                          "title": "this is menu",
+                          "text": "description",
+                          "actions": [
+                              {
+                                  "type": "postback",
+                                  "label": "Buy",
+                                  "data": "action=buy&itemid=222"
+                              },
+                              {
+                                  "type": "postback",
+                                  "label": "Add to cart",
+                                  "data": "action=add&itemid=222"
+                              },
+                              {
+                                  "type": "uri",
+                                  "label": "View detail",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        }
+                    ]
+                }
+              }
+            ]
+    }
+    req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
+
 
 # def post_question(send_to, question):
 #     options = {
@@ -216,7 +283,11 @@ def dispose(events):
 def response_to_talk(reply_token, event):
   print("enter response to talk")
   text = event['message']['text']
-  post_text(reply_token, text)
+  if 'カルーセル' in text:
+    post_carousel(reply_token)
+  else:
+    post_text(reply_token, text)
+
 
 def post_test(request):
   return render(request, 'post_test.html')
