@@ -146,10 +146,10 @@ def post_image(reply_token):
           "messages":[
               {
                   "type": "image",
-                  "originalContentUrl": "http://blogimg.goo.ne.jp/user_image/03/1f/d4a55e24e0cd7993539025c25fe426b8.jpg/",
-                  "previewImageUrl": "http://blogimg.goo.ne.jp/user_image/03/1f/d4a55e24e0cd7993539025c25fe426b8.jpg/"
+                  "originalContentUrl": "http://d13n9ry8xcpemi.cloudfront.net/photo/odai/400/38954183f63332c096fd11c7ed57e7a6_400.jpg",
+                  "previewImageUrl": "http://d13n9ry8xcpemi.cloudfront.net/photo/odai/400/38954183f63332c096fd11c7ed57e7a6_400.jpg"
               }
-            ]
+        ]
     }
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
 
