@@ -146,8 +146,8 @@ def post_image(reply_token):
           "messages":[
               {
                   "type": "image",
-                  "originalContentUrl": "http://d13n9ry8xcpemi.cloudfront.net/photo/odai/400/38954183f63332c096fd11c7ed57e7a6_400.jpg",
-                  "previewImageUrl": "http://images.uncyc.org/ja/thumb/a/a9/Uniqlo_u1000000.png/240px-Uniqlo_u1000000.png"
+                  "originalContentUrl": "http://cdn-ak.f.st-hatena.com/images/fotolife/m/matuken1987/20100627/20100627162943.jpg",
+                  "previewImageUrl": "https://example.com/preview.jpg"
               }
         ]
     }
@@ -212,7 +212,7 @@ def response_to_talk(reply_token, event):
   text = event['message']['text']
   if 'カルーセル' in text:
     post_carousel(reply_token)
-  elif 'やきさば' in text:
+  elif 'カール' in text:
     post_image(reply_token)
   else:
     post_text(reply_token, text)
