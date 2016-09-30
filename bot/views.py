@@ -58,7 +58,7 @@ def post_text(reply_token, text):
     # payload_text = ''.join(output)
     payload = {
           'replyToken':reply_token,
-          'message':[
+          'messages':[
               {
                 'type': 'text',
                 'text': 'こんにちは'
