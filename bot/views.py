@@ -125,7 +125,19 @@ def post_carousel(reply_token):
                               }
                           ]
                         },
- 
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/harumaki_240.jpeg",
+                          "title": "ヴェトナムTokyo",
+                          "text": "東池袋にあるしたベトナム料理の老舗。40年以上人々に愛され続けてきたベトナム料理をご提供します。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        },
            
                     ]
                 }
