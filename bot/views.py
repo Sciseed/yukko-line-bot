@@ -358,6 +358,8 @@ def response_to_talk(reply_token, event):
   text = event['message']['text']
   if '焼き鯖' in text:
     post_imagemap(reply_token)
+  elif 'カルーセル' in text:
+    post_carousel(reply_token)
   else:
     post_text(reply_token, text)
 
