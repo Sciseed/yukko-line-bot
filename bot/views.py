@@ -91,16 +91,7 @@ def post_carousel(reply_token):
                           "title": "ジャンク・バーガー",
                           "text": "誰が何と言おうとジャンクフードの王様は、今も昔も変わらずハンバーガー。",
                           "actions": [
-                              {
-                                  "type": "postback",
-                                  "label": "Buy",
-                                  "data": "action=buy&itemid=222"
-                              },
-                              {
-                                  "type": "postback",
-                                  "label": "Add to cart",
-                                  "data": "action=add&itemid=222"
-                              },
+
                               {
                                   "type": "uri",
                                   "label": "View detail",
