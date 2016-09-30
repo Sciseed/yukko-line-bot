@@ -27,6 +27,7 @@ def make_output(content):
   }
   docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
   mizu_res = []
+  """
   #入力をMIZU APIに投げる→回答リストを取得
   try:
     print(requests.get(MIZU_ENDPOINT, params=q).text)
@@ -68,7 +69,7 @@ def make_output(content):
   #   print(kotae_list)
   except:
     print('mizu_res : value error')
-
+  """
   #outputの選択
   if mizu_res != [] and mizu_res[0]['a'] != []:
         output = mizu_res[0]['a']
