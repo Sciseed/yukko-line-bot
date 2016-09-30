@@ -146,8 +146,8 @@ def post_image(reply_token):
           "messages":[
               {
                   "type": "image",
-                  "originalContentUrl": "http://d2dcan0armyq93.cloudfront.net/photo/odai/400/b72db8c019e3e2ee8e7da084da2c3dfb_400.jpg",
-                  "previewImageUrl": "https://example.com/preview.jpg"
+                  "originalContentUrl": "http://d13n9ry8xcpemi.cloudfront.net/photo/odai/400/38954183f63332c096fd11c7ed57e7a6_400.jpg",
+                  "previewImageUrl": "http://images.uncyc.org/ja/thumb/a/a9/Uniqlo_u1000000.png/240px-Uniqlo_u1000000.png"
               }
         ]
     }
