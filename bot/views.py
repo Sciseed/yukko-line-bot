@@ -210,7 +210,7 @@ def response_to_talk(reply_token, event):
   print("enter response to talk")
   text = event['message']['text']
   if '焼き鯖' in text:
-    post_imagemap(reply_token)
+    post_image(reply_token)
   elif 'カルーセル' in text:
     post_carousel(reply_token)
   else:
