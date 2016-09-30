@@ -76,8 +76,6 @@ def post_carousel(reply_token):
         "Content-Type": "application/json",
         "Authorization": "Bearer CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU="
     }
-    output = mecab_test.make_output(text)
-    payload_text = ''.join(output)
     payload = {
           "replyToken":reply_token,
           "messages":[
