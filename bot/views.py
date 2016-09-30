@@ -22,7 +22,6 @@ MIZU_ENDPOINT = 'http://myconcierlb-708356017.us-west-2.elb.amazonaws.com:9000/a
 
 # Messaging API版
 def post_text(reply_token, text):
-    print("enter post text")
     header = {
         "Content-Type": "application/json",
         "Authorization": "Bearer CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU="
@@ -38,11 +37,7 @@ def post_text(reply_token, text):
                 }
             ]
     }
-    print("reply token: "+reply_token)
-    print(payload)
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
-    print("req done")
-    print(req)
 
 def post_carousel(reply_token):
     header = {
@@ -141,7 +136,7 @@ def post_confirm(reply_token):
     }
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
 
-def post_imagemap(reply_token):
+def post_image(reply_token):
     header = {
         "Content-Type": "application/json",
         "Authorization": "Bearer CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU="
@@ -149,40 +144,57 @@ def post_imagemap(reply_token):
     payload = {
           "replyToken":reply_token,
           "messages":[
-            {
-              "type": "imagemap",
-              "baseUrl": "http://blogimg.goo.ne.jp/user_image/03/1f/d4a55e24e0cd7993539025c25fe426b8.jpg",
-              "altText": "this is an imagemap",
-              "baseSize": {
-                  "height": 1040,
-                  "width": 1040
-              },
-              "actions": [
-                  {
-                      "type": "uri",
-                      "linkUri": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%90",
-                      "area": {
-                          "x": 0,
-                          "y": 0,
-                          "width": 520,
-                          "height": 1040
-                      }
-                  },
-                  {
-                      "type": "message",
-                      "text": "焼きそばだよ！！！！！",
-                      "area": {
-                          "x": 520,
-                          "y": 0,
-                          "width": 520,
-                          "height": 1040
-                      }
-                  }
-              ]
-            }
-          ]
+              {
+                  "type": "image",
+                  "originalContentUrl": "http://blogimg.goo.ne.jp/user_image/03/1f/d4a55e24e0cd7993539025c25fe426b8.jpg/",
+                  "previewImageUrl": "http://blogimg.goo.ne.jp/user_image/03/1f/d4a55e24e0cd7993539025c25fe426b8.jpg/"
+              }
+            ]
     }
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
+
+# def post_imagemap(reply_token):
+#     header = {
+#         "Content-Type": "application/json",
+#         "Authorization": "Bearer CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU="
+#     }
+#     payload = {
+#           "replyToken":reply_token,
+#           "messages":[
+#             {
+#               "type": "imagemap",
+#               "baseUrl": "http://blogimg.goo.ne.jp/user_image/03/1f/d4a55e24e0cd7993539025c25fe426b8.jpg/1040",
+#               "altText": "this is an imagemap",
+#               "baseSize": {
+#                   "height": 1040,
+#                   "width": 1040
+#               },
+#               "actions": [
+#                   {
+#                       "type": "uri",
+#                       "linkUri": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%90",
+#                       "area": {
+#                           "x": 0,
+#                           "y": 0,
+#                           "width": 520,
+#                           "height": 1040
+#                       }
+#                   },
+#                   {
+#                       "type": "message",
+#                       "text": "焼きそばだよ！！！！！",
+#                       "area": {
+#                           "x": 520,
+#                           "y": 0,
+#                           "width": 520,
+#                           "height": 1040
+#                       }
+#                   }
+#               ]
+#             }
+#           ]
+#     }
+#     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
 
 #Messaging API版
 def dispose(events):
