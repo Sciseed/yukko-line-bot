@@ -168,6 +168,49 @@ def post_confirm(reply_token):
     }
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
 
+def post_imagemap(reply_token):
+    header = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer CN7ARoWPO9AiF29T6YwXWZsZpF8Ykq5ZQmJlfAvPYAXfz87Bep8WQjrQyMWf7dkJLbTQVlP7Itb5sraJ4+gGI8S65ai9Hphr3m52AX6Jxbg5YQ0BzC9c6beuY0C7LBqJ/eW92kQWABOfe/r+12YwAgdB04t89/1O/w1cDnyilFU="
+    }
+    payload = {
+          "replyToken":reply_token,
+          "messages":[
+            {
+              "type": "imagemap",
+              "baseUrl": "https://example.com/bot/images/rm001",
+              "altText": "this is an imagemap",
+              "baseSize": {
+                  "height": 1040,
+                  "width": 1040
+              },
+              "actions": [
+                  {
+                      "type": "uri",
+                      "linkUri": "https://example.com/",
+                      "area": {
+                          "x": 0,
+                          "y": 0,
+                          "width": 520,
+                          "height": 1040
+                      }
+                  },
+                  {
+                      "type": "message",
+                      "text": "hello",
+                      "area": {
+                          "x": 520,
+                          "y": 0,
+                          "width": 520,
+                          "height": 1040
+                      }
+                  }
+              ]
+            }
+          ]
+    }
+    req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
+
 
 # def post_question(send_to, question):
 #     options = {
