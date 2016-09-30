@@ -94,11 +94,50 @@ def post_carousel(reply_token):
 
                               {
                                   "type": "uri",
-                                  "label": "View detail",
+                                  "label": "詳細を見る",
                                   "uri": "http://example.com/page/222"
                               }
                           ]
-                        }
+                        },
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/pizza_240.jpeg",
+                          "title": "pizza cap",
+                          "text": "本場ナポリの味を早く、安く。都内に17店舗展開するピザ専門店です。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        },
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/bread_240.jpeg",
+                          "title": "本格パン工房 たけよし",
+                          "text": "パンにとって一番大事だと思うものはなんですか？たけよしは、表面の焼き上がりこそが命であると考えています。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        },
+                        {
+                          "thumbnailImageUrl": "https://s3-us-west-2.amazonaws.com/lineapitest/harumaki_240.jpeg",
+                          "title": "ヴェトナムTokyo",
+                          "text": "1970年に東池袋にオープンしたベトナム料理の老舗。40年以上の歴史を持ちながら、現代人の味覚に合わせたベトナム料理をご提供します。",
+                          "actions": [
+                          
+                              {
+                                  "type": "uri",
+                                  "label": "詳細を見る",
+                                  "uri": "http://example.com/page/222"
+                              }
+                          ]
+                        },
            
                     ]
                 }
