@@ -27,49 +27,6 @@ def make_output(content):
   }
   docomo_res_q = json.loads(requests.get(DOCOMO_ENDPOINT, params=options).text)
   mizu_res = []
-  """
-  #入力をMIZU APIに投げる→回答リストを取得
-  try:
-    print(requests.get(MIZU_ENDPOINT, params=q).text)
-    mizu_res = json.loads(requests.get(MIZU_ENDPOINT, params=q).text)
-  #   #質問を形態素解析して単語ごとにリスト化
-  #   #q_user_li = janome_morpheme(q['q'])
-  #   answerType_q = automaton.make_flag(q['q'])
-  #   distance_li = []
-  #   sentaku_list = []
-  #   aaa_list = []
-  #   kotae_list = []
-  #   for k in mizu_res:
-  #     for res in k['q']:
-  #       print(res)
-  #       answerType_res = automaton.make_flag(res)
-  #       if answerType_res == answerType_q:
-  #         sentaku_list.append(res)
-  #         aaa_list.append(1)
-  #       else:
-  #         aaa_list.append(0)
-  #       #回答の要素を形態素解析
-  #       # res_li = janome_morpheme(res)
-  #       # print(res_li)
-  #       # distance = editdistance.eval(q_user_li, res_li)
-  #       # distance_li.append(distance)
-  #     #編集距離最短のindexを取得
-  #     # print(distance_li)
-  #     # n = distance_li.index(min(distance_li))
-  #     # min_dis_ans = mizu_res[0]['a'][n]
-  #   j = 0
-  #   for kkk in aaa_list:
-  #     if kkk == 1:
-  #       kotae_list.append(mizu_res[j]['a'])
-  #       j += 1
-  #     else:
-  #       j += 1
-  #       continue
-
-  #   print(kotae_list)
-  except:
-    print('mizu_res : value error')
-  """
   #outputの選択
   if mizu_res != [] and mizu_res[0]['a'] != []:
         output = mizu_res[0]['a']
@@ -77,7 +34,6 @@ def make_output(content):
       output = [docomo_res['utt']]
   else:
       output = [docomo_res_q['message']['textForDisplay']]
-
   return output
 
 def output_csv(csv_file):
