@@ -80,36 +80,6 @@ def make_output(content):
 
   return output
 
-# def mecab_morpheme(sentence):
-#   m = MeCab.Tagger("-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd")
-#   wakati = m.parse(sentence)
-#   li = wakati.split(' ')
-#   return li
-
-# def janome_morpheme(sentence):
-#   t = Tokenizer()
-#   tokens = t.tokenize(sentence)
-#   li = [token.surface for token in tokens]
-#   return li
-
-# def input_csv_to_automaton(csv_file):
-#   with codecs.open(csv_file, "r", "Shift-JIS", "ignore") as file:
-#     df = pandas.read_table(file, delimiter=",")
-#     for script in df['script']:
-#       flag = automaton.make_flag(script)
-#       print(flag)
-
-# def input_automaton_to_csv(csv_file):
-#   with codecs.open(csv_file, "r", "Shift-JIS", "ignore") as file:
-#     df = pandas.read_table(file, delimiter=",")
-#     for script in df['script']:
-#       flag = automaton.make_flag(script)
-
-# def print_csv(csv_file):
-#   with codecs.open(csv_file, "r", "Shift-JIS", "ignore") as file:
-#     df = pandas.read_table(file, delimiter=",")
-#     print(df['script'])
-
 def output_csv(csv_file):
   with codecs.open(csv_file, "r", "utf-8", "ignore") as file:
     df = pandas.read_table(file, delimiter=",")
@@ -119,6 +89,3 @@ def output_csv(csv_file):
       flag = cross_layer.make_flag(script)
       writer.writerow(flag)
     g.close()
-
-if __name__ == '__main__':
-  output_csv('recent_message_list.csv')
