@@ -13,6 +13,7 @@ from bot import mecab_test
 
 # Trial版エンドポイント
 # ENDPOINT = 'https://trialbot-api.line.me/v1/events'
+
 #Messaging API版エンドポイント
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 
@@ -53,6 +54,7 @@ def post_text(reply_token, text):
     header = {
         "Content-Type": "application/json",
         "Authorization": "Bearer rrlbmMP4gH0kCdQFinWHscLBKEwKWNVITHjEBjnC+x3BMBa3QC2P+s5QjvK4LDJ/sF+IYKpGL/cu9GZAisaJSdvU7fVkapN7ynV/dg3b/z8E5IrfTWIa0ovmrlUA4L4NLpXmcRzgeoIWcWHJ0ZrEFwdB04t89/1O/w1cDnyilFU="
+
     }
     output = mecab_test.make_output(text)
     payload_text = ''.join(output)
@@ -65,16 +67,14 @@ def post_text(reply_token, text):
                 }
             ]
     }
-    print("reply token: "+reply_token)
-    print(payload)
+
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
-    print("req done")
-    print(req)
 
 def post_carousel(reply_token):
     header = {
         "Content-Type": "application/json",
         "Authorization": "Bearer rrlbmMP4gH0kCdQFinWHscLBKEwKWNVITHjEBjnC+x3BMBa3QC2P+s5QjvK4LDJ/sF+IYKpGL/cu9GZAisaJSdvU7fVkapN7ynV/dg3b/z8E5IrfTWIa0ovmrlUA4L4NLpXmcRzgeoIWcWHJ0ZrEFwdB04t89/1O/w1cDnyilFU="
+
     }
     payload = {
           "replyToken":reply_token,
@@ -177,6 +177,7 @@ def post_confirm(reply_token):
           ]
     }
     req = requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
+
 
 def post_imagemap(reply_token):
     header = {
@@ -343,7 +344,6 @@ def dispose(events):
     user_id = event['source']['userId']
     response_to_talk(reply_token, event)
 
-
 # # Trial版
 # def response_to_talk(send_to, result):
 #     content_type = result['content']['contentType']
@@ -382,6 +382,7 @@ class HelloView(View):
         return JsonResponse({'suzuki':'kosuke'})
 
     def post(self, request, *args, **kwargs):
+      print(request.body.decode("utf-8"))
       #Trial版
       dispose(json.loads(request.body.decode("utf-8"))['events'])
       return JsonResponse({'kosuke': 'suzuki'})
