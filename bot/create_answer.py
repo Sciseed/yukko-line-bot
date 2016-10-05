@@ -35,13 +35,3 @@ def make_output(content):
   else:
       output = [docomo_res_q['message']['textForDisplay']]
   return output
-
-def output_csv(csv_file):
-  with codecs.open(csv_file, "r", "utf-8", "ignore") as file:
-    df = pandas.read_table(file, delimiter=",")
-    g = open('result_recent_message.csv', 'w')
-    writer = csv.writer(g)
-    for script in df.iloc[:,1]:
-      flag = cross_layer.make_flag(script)
-      writer.writerow(flag)
-    g.close()
