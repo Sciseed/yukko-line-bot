@@ -14,9 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
-from bot.views import HelloView
+from bot.views import ViewSet
 
 urlpatterns = [
-    url(r'^post_test/$', include('bot.urls', namespace='bot')),
-    url(r'^callback$', HelloView.as_view()),
+    url(r'^callback$', ViewSet.as_view()),
 ]

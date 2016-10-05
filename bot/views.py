@@ -8,7 +8,6 @@ import requests
 from django.http import JsonResponse
 from django.views.generic import View
 import urllib
-import editdistance
 from bot import create_answer
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
@@ -208,16 +207,12 @@ def response_to_talk(reply_token, event):
   else:
     post_text(reply_token, text)
 
-
-def post_test(request):
-  return render(request, 'post_test.html')
-
-class HelloView(View):
+class ViewSet(View):
     http_method_names = ['get', 'post']
 
     def get(self, *args, **kwargs):
-        return JsonResponse({'suzuki':'kosuke'})
+      return JsonResponse({'': ''})
 
     def post(self, request, *args, **kwargs):
       dispose(json.loads(request.body.decode("utf-8"))['events'])
-      return JsonResponse({'kosuke': 'suzuki'})
+      return JsonResponse({'': ''})
