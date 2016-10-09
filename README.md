@@ -5,7 +5,7 @@ LINE Messaging APIを用いたChatbotです。
 *LICENSE
 [MIT](https://github.com/Sciseed/yukko-line-bot/blob/master/LICENSE.txt)
 #必要なもの
-・docomo APIアカウント
+・docomo APIアカウント  
 ・LINE Businessアカウント
 #導入手順
 ###作業スペースを作成  
