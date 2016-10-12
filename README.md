@@ -8,12 +8,15 @@ LINE Messaging APIを用いたChatbotです。
 ・docomo APIアカウント  
 ・LINE Businessアカウント
 #導入手順
-###作業スペースを作成  
-`mkdir workspace`  
-`cd workspace`  
 ###yukko-line-botをローカルにクローン  
 `git clone git@github.com:Sciseed/yukko-line-bot.git`  
 `cd yukko-line-bot`  
+###ローカルでyukko-line-botを起動して動作を確認
+`python manage.py runserver`  
+ローカルサーバーにGETリクエストを送ってみる  
+`curl -X GET http://127.0.0.1:8000/callback`  
+{"Successfully": "Connected!"}  
+と返されたら成功  
 ###herokuにデプロイ  
 `heroku create`  
 `git push heroku master`  
@@ -21,7 +24,7 @@ LINE Messaging APIを用いたChatbotです。
 ブラウザで  
 https://xxxxxxx.herokuapp.com/callback  
 にアクセス（'xxxxxxx'はアプリ名）  
-{"": ""}と表示されれば正しく動いています。  
+{"Successfully": "Connected!"}と表示されれば正しく動いています。  
 ###認証情報を設定  
 docomo API KeyとLINEのAuthorizatinoを自分のものに書き換えます。  
 ###callback URLを設定  

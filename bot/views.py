@@ -211,7 +211,7 @@ class ViewSet(View):
     http_method_names = ['get', 'post']
 
     def get(self, *args, **kwargs):
-      return JsonResponse({'': ''})
+      return JsonResponse({'Successfully': 'Connected!'})
 
     def post(self, request, *args, **kwargs):
       dispose(json.loads(request.body.decode("utf-8"))['events'])
