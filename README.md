@@ -16,7 +16,7 @@ LINEからメッセージを送信するとLINE Messaging APIがHeroku上のDjan
 `cd yukko-line-bot`  
 ###ローカルでyukko-line-botを起動して動作を確認
 ####仮想環境構築
-`source virenv/bin/activate`
+`source virenv/bin/activate`  
 virenv/はvirtualenvが入っているディレクトリです。自身の環境に合わせて参照してください  
 `python manage.py runserver`  
 ローカルサーバーにGETリクエストを送ってみる  
