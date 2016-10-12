@@ -1,6 +1,9 @@
 # yukko-line-bot
-LINE Messaging APIを用いたChatbotです。
+PythonとLINE Messaging APIを用いたChatbotの実装サンプルです。ユーザーとLINE上で雑談することができます。
 おしゃべり機能にはdocomo雑談対話APIを、Q&A機能にdocomo知識Q&AAPIを使用しています。
+#環境構成
+Python 3.4.0
+LINEからメッセージを送信するとLINE Messaging APIがHeroku上のDjangoサーバーを叩き、yukko-line-botがLINE Messaging APIにレスポンスを返し、LINEに表示されます。
 ##License
 *LICENSE
 [MIT](https://github.com/Sciseed/yukko-line-bot/blob/master/LICENSE.txt)
@@ -18,6 +21,7 @@ LINE Messaging APIを用いたChatbotです。
 {"Successfully": "Connected!"}  
 と返されたら成功  
 ###herokuにデプロイ  
+herokuアプリの詳しい作成手順(https://gist.github.com/konitter/5370904)
 `heroku create`  
 `git push heroku master`  
 ###デプロイされたかチェックする。  
@@ -26,10 +30,12 @@ https://xxxxxxx.herokuapp.com/callback
 にアクセス（'xxxxxxx'はアプリ名）  
 {"Successfully": "Connected!"}と表示されれば正しく動いています。  
 ###認証情報を設定  
+bot/views.pyの
 docomo API KeyとLINEのAuthorizatinoを自分のものに書き換えます。  
 ###callback URLを設定  
 LINE developerからwebhook URLに  
 `https://xxxxxxx.herokuapp.com/callback`  
 を設定する。  
 #Qiita
+LINE Messaging APIとPythonを使ってChatbotを作ってみた  
 http://qiita.com/Kosuke-Szk/items/eea6457616b6180c82d3
