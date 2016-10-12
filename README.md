@@ -2,7 +2,7 @@
 PythonとLINE Messaging APIを用いたChatbotの実装サンプルです。ユーザーとLINE上で雑談することができます。
 おしゃべり機能にはdocomo雑談対話APIを、Q&A機能にdocomo知識Q&AAPIを使用しています。
 #環境構成
-Python 3.4.0
+Python 3.4.0  
 LINEからメッセージを送信するとLINE Messaging APIがHeroku上のDjangoサーバーを叩き、yukko-line-botがLINE Messaging APIにレスポンスを返し、LINEに表示されます。
 ##License
 *LICENSE
